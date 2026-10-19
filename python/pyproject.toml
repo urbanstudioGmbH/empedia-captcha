@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "empedia-captcha"
+version = "1.0.1"
+description = "SDK für EMPEDIAcaptcha: Bot-Prüfung (siteverify) und Inhaltsprüfung (check). Ohne Abhängigkeiten."
+requires-python = ">=3.8"
+license = { text = "MIT" }
+readme = "README.md"
+authors = [{ name = "urbanstudio GmbH" }]
+keywords = ["captcha", "spam", "bot-protection", "privacy", "gdpr"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Intended Audience :: Developers",
+  "Topic :: Security",
+]
+
+[project.urls]
+Homepage = "https://empedia.cloud/docs-guides/captcha.html"
+Source = "https://github.com/urbanstudioGmbH/empedia-captcha"
+Issues = "https://github.com/urbanstudioGmbH/empedia-captcha/issues"
+
+[tool.setuptools]
+packages = ["empedia_captcha"]

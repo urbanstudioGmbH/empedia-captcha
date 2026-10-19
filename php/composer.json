@@ -1,0 +1,38 @@
+{
+    "name": "urbanstudio/empedia-captcha",
+    "description": "SDK für EMPEDIAcaptcha: Bot-Prüfung (siteverify), Inhaltsprüfung (check) und Widget-Helfer. Ohne Abhängigkeiten.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Empedia\\Captcha\\": "src/"
+        }
+    },
+    "keywords": [
+        "captcha",
+        "spam",
+        "bot-protection",
+        "privacy",
+        "gdpr"
+    ],
+    "homepage": "https://empedia.cloud/docs-guides/captcha.html",
+    "authors": [
+        {
+            "name": "urbanstudio GmbH",
+            "homepage": "https://urbanstudio.de"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/urbanstudioGmbH/empedia-captcha/issues",
+        "docs": "https://empedia.cloud/docs-guides/captcha.html"
+    },
+    "suggest": {
+        "ext-curl": "schneller als PHP-Streams"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

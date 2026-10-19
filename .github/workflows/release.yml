@@ -1,0 +1,89 @@
+# Veröffentlichung: Tag setzen (z. B. v1.0.1). npm und PyPI nutzen Trusted Publishing; SPLIT_TOKEN schreibt nur in die drei Split-Repositories.
+name: Release
+on:
+  push: { tags: ['v*'] }
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: SDK-Versionen mit dem Tag vergleichen
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          test "$(node -p "require('./node/package.json').version")" = "$VERSION"
+          test "$(node -p "require('./react/package.json').version")" = "$VERSION"
+          test "$(node -p "require('./shopware/EmpediaCaptcha/composer.json').version")" = "$VERSION"
+          grep -Fq "version = \"$VERSION\"" python/pyproject.toml
+          grep -Fq "'version' => '$VERSION'" typo3/empedia_captcha/ext_emconf.php
+  npm:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions: { contents: read, id-token: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, registry-url: 'https://registry.npmjs.org' }
+      - run: npm install --global npm@^11.5.1
+      - run: |
+          if npm view "@urbanstudio/empedia-captcha@${GITHUB_REF_NAME#v}" version >/dev/null 2>&1; then
+            echo 'Node-SDK bereits veröffentlicht'
+          else
+            (cd node && npm publish --access public)
+          fi
+      - run: |
+          if npm view "@urbanstudio/empedia-captcha-react@${GITHUB_REF_NAME#v}" version >/dev/null 2>&1; then
+            echo 'React-Baustein bereits veröffentlicht'
+          else
+            (cd react && npm publish --access public)
+          fi
+  pypi:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions: { contents: read, id-token: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: python -m pip install build
+      - run: cd python && python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with: { packages-dir: python/dist/ }
+  # Packagist braucht composer.json im Wurzelverzeichnis eines Repositories → je Paket ein schreibgeschütztes Split-Repository
+  split:
+    needs: verify
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - { prefix: php, repo: urbanstudioGmbH/empedia-captcha-php }
+          - { prefix: typo3/empedia_captcha, repo: urbanstudioGmbH/empedia-captcha-typo3 }
+          - { prefix: shopware/EmpediaCaptcha, repo: urbanstudioGmbH/empedia-captcha-shopware }
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - run: |
+          git subtree split --prefix='${{ matrix.prefix }}' -b split
+          git push --force "https://x-access-token:${{ secrets.SPLIT_TOKEN }}@github.com/${{ matrix.repo }}.git" split:main
+          git push --force "https://x-access-token:${{ secrets.SPLIT_TOKEN }}@github.com/${{ matrix.repo }}.git" "split:refs/tags/${GITHUB_REF_NAME}"
+  # Go-Module in Unterordnern werden über Tags mit Ordnerpräfix gefunden (go/v1.0.0)
+  gotag:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git tag "go/${GITHUB_REF_NAME}" && git push origin "go/${GITHUB_REF_NAME}"
+  wordpress:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cd wordpress && zip -qr ../empedia-shield.zip empedia-shield
+          [ -d empedia-shield-sftp ] && zip -qr ../empedia-shield-sftp.zip empedia-shield-sftp || true
+      - uses: softprops/action-gh-release@v2
+        with: { files: "empedia-shield.zip\nempedia-shield-sftp.zip" }

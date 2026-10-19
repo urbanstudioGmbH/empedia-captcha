@@ -1,0 +1,18 @@
+{
+  "name": "@urbanstudio/empedia-captcha-react",
+  "version": "1.0.1",
+  "description": "React-/Next.js-Baustein für EMPEDIAcaptcha: Komponente und Hook für die Bot-Prüfung im Browser.",
+  "type": "module",
+  "main": "index.js",
+  "exports": { ".": { "import": "./index.js", "types": "./index.d.ts" } },
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "peerDependencies": { "react": ">=17" },
+  "keywords": ["captcha", "react", "nextjs", "spam", "privacy", "gdpr", "empedia"],
+  "homepage": "https://empedia.cloud/docs-guides/captcha.html",
+  "repository": { "type": "git", "url": "git+https://github.com/urbanstudioGmbH/empedia-captcha.git", "directory": "react" },
+  "license": "MIT",
+  "author": "urbanstudio GmbH",
+  "publishConfig": { "access": "public" },
+  "files": ["index.js", "index.d.ts", "README.md", "LICENSE"]
+}

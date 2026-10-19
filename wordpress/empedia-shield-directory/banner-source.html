@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EMPEDIA Shield – directory banner (source)</title>
+<!-- Source of banner-772x250.png and banner-1544x500.png; rendered by scripts/ops/make-wordpress-banner.mjs (Chromium, 772 x 250 CSS pixels, device scale 1 and 2).
+     Brand colours: dark #131B22 / #1F2830, green #2D8A3A / #1D7D43, light text #E0E6EB. Key content stays in the middle: the directory crops the sides on small screens. -->
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { width: 772px; height: 250px; overflow: hidden; background: #131B22; font-family: "Liberation Sans", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif; }
+  .banner { position: relative; width: 772px; height: 250px; overflow: hidden;
+    background: radial-gradient(520px 260px at 82% 8%, rgba(45,138,58,.26), rgba(45,138,58,0) 70%), linear-gradient(135deg, #131B22 0%, #1A242C 55%, #1F2830 100%); }
+  .shield { position: absolute; right: -34px; top: -26px; width: 300px; height: 330px; opacity: .10; }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(224,230,235,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(224,230,235,.035) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent); mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent); }
+  .content { position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; gap: 26px; }
+  .icon { width: 104px; height: 104px; border-radius: 22px; box-shadow: 0 10px 28px rgba(0,0,0,.45), 0 0 0 1px rgba(224,230,235,.14); flex: none; }
+  .text { color: #E0E6EB; }
+  .title { font-size: 54px; line-height: 1; font-weight: 700; letter-spacing: -1px; white-space: nowrap; }
+  .title b { font-weight: 700; }
+  .title span { color: #E0E6EB; font-weight: 400; }
+  .rule { width: 56px; height: 4px; border-radius: 2px; margin: 14px 0 12px; background: linear-gradient(90deg, #2D8A3A, #1D7D43); }
+  .sub { font-size: 21px; line-height: 1.25; color: #B9C4CE; white-space: nowrap; letter-spacing: .1px; }
+</style>
+</head>
+<body>
+<div class="banner">
+  <svg class="shield" viewBox="0 0 100 110" aria-hidden="true"><path d="M50 4 L92 20 V54 C92 80 74 98 50 106 C26 98 8 80 8 54 V20 Z" fill="none" stroke="#2D8A3A" stroke-width="5" stroke-linejoin="round"/></svg>
+  <div class="grid"></div>
+  <div class="content">
+    <img class="icon" src="../../frontend/img/empedia-icon-1024.png" alt="">
+    <div class="text">
+      <div class="title"><b>EMPEDIA</b> <span>Shield</span></div>
+      <div class="rule"></div>
+      <div class="sub">Security, Firewall &amp; Backups</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

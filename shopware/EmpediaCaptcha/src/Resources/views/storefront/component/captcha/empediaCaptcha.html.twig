@@ -1,0 +1,8 @@
+{% block component_captcha_empedia %}
+    {% set base = config('EmpediaCaptcha.config.base') %}
+    {% set sitekey = config('EmpediaCaptcha.config.sitekey') %}
+    {% if base and sitekey %}
+        <script src="{{ base|trim('/', 'right') }}/captcha/v1/widget.js" async defer></script>
+        <div class="empedia-captcha" data-sitekey="{{ sitekey }}" data-action="{{ formId|default('form') }}"></div>
+    {% endif %}
+{% endblock %}

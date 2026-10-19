@@ -1,0 +1,70 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: EMPEDIA Shield SFTP 1.0.0\n"
+"Report-Msgid-Bugs-To: https://empedia.cloud\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+msgid "SFTP (SSH)"
+msgstr ""
+
+msgid "Server"
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "Default 22."
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password or private key."
+msgstr ""
+
+msgid "Private key"
+msgstr ""
+
+msgid "Paste the private key (OpenSSH or PEM). Leave empty to use the password."
+msgstr ""
+
+msgid "Server fingerprint"
+msgstr ""
+
+msgid "SHA256 fingerprint of the server key. It is remembered on the first connection if you leave this empty."
+msgstr ""
+
+msgid "Folder"
+msgstr ""
+
+msgid "Folder for the backups, for example empedia-backups. It is created if needed."
+msgstr ""
+
+msgid "EMPEDIA Shield SFTP needs EMPEDIA Shield 1.8.0 or newer. Please install and activate EMPEDIA Shield (or update it); until then the SFTP target is not available."
+msgstr ""
+
+msgid "You are not allowed to do this."
+msgstr ""
+
+msgid "is out of date: version %1$s is installed, version %2$s is available."
+msgstr ""
+
+msgid "It will be installed automatically with the next WordPress update run."
+msgstr ""
+
+msgid "Automatic updates are switched off."
+msgstr ""
+
+msgid "Update now"
+msgstr ""
+
+msgid "The update package could not be verified and was not installed."
+msgstr ""

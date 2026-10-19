@@ -1,0 +1,1865 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: EMPEDIA Shield 1.8.2\n"
+"Report-Msgid-Bugs-To: https://empedia.cloud\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "EMPEDIA Shield replaces the plugin “EMPEDIAcloud”. Please deactivate and delete “EMPEDIAcloud” (and “EMPEDIAcaptcha”, if installed) on the Plugins page. Your settings are kept. EMPEDIA Shield stays off until then."
+msgstr ""
+
+msgid "Bot protection is now part of EMPEDIA Shield. Please deactivate and delete the separate plugin “EMPEDIAcaptcha” – until then its own copy keeps running and the built-in bot protection stays off. Your keys and settings are kept."
+msgstr ""
+
+msgid "You are not allowed to do this."
+msgstr ""
+
+msgid "Settings saved."
+msgstr ""
+
+msgid "Checking WordPress files …"
+msgstr ""
+
+msgid "Looking for foreign files in WordPress folders …"
+msgstr ""
+
+msgid "Checking plugins …"
+msgstr ""
+
+msgid "Looking at the uploads folder …"
+msgstr ""
+
+msgid "Searching code for known patterns …"
+msgstr ""
+
+msgid "Starting the check …"
+msgstr ""
+
+msgid "The request failed. Please try again."
+msgstr ""
+
+msgid "WordPress files that differ from the original"
+msgstr ""
+
+msgid "WordPress files that are missing"
+msgstr ""
+
+msgid "Foreign PHP files in the WordPress core folders"
+msgstr ""
+
+msgid "Unknown PHP files in the main folder"
+msgstr ""
+
+msgid "Plugin files that differ from the original"
+msgstr ""
+
+msgid "Additional PHP files inside plugins"
+msgstr ""
+
+msgid "PHP files in the uploads folder"
+msgstr ""
+
+msgid "Code with suspicious patterns"
+msgstr ""
+
+msgid "Code is decoded and executed"
+msgstr ""
+
+msgid "eval() with a decoding function"
+msgstr ""
+
+msgid "eval() runs visitor input"
+msgstr ""
+
+msgid "assert() with visitor input"
+msgstr ""
+
+msgid "System command with visitor input or decoded content"
+msgstr ""
+
+msgid "Name of a well-known web shell"
+msgstr ""
+
+msgid "File inclusion from visitor input"
+msgstr ""
+
+msgid "Visitor input is called as a function"
+msgstr ""
+
+msgid "Function called from a variable with visitor input"
+msgstr ""
+
+msgid "Callback trick that executes code"
+msgstr ""
+
+msgid "Function call through $GLOBALS"
+msgstr ""
+
+msgid "php://input together with eval()"
+msgstr ""
+
+msgid "Uploaded files are saved as PHP"
+msgstr ""
+
+msgid "Creates an administrator by code"
+msgstr ""
+
+msgid "preg_replace with /e and visitor input"
+msgstr ""
+
+msgid ".htaccess includes a file in every PHP page"
+msgstr ""
+
+msgid ".htaccess lets images or text run as PHP"
+msgstr ""
+
+msgid "File name of a well-known web shell"
+msgstr ""
+
+msgid "Hidden PHP file"
+msgstr ""
+
+msgid "File check"
+msgstr ""
+
+msgid "Compares WordPress and your plugins from wordpress.org with the official checksums, looks for PHP files in the uploads folder and searches code without official checksums for well-known backdoor patterns. Only paths are stored and reported – never file contents. Findings are hints to check, not proof of an infection."
+msgstr ""
+
+msgid "Check files now"
+msgstr ""
+
+msgid "The check is running …"
+msgstr ""
+
+msgid "Last check %1$s ago, %2$d files searched for patterns."
+msgstr ""
+
+msgid "The official checksums for this WordPress version could not be loaded, so WordPress files were not compared."
+msgstr ""
+
+msgid "%d plugins have no official checksums (premium or custom plugins); their code was searched for patterns instead."
+msgstr ""
+
+msgid "The pattern search stopped at the maximum number of files; large installations are not searched completely."
+msgstr ""
+
+msgid "No check has run yet."
+msgstr ""
+
+msgid "Mark as expected"
+msgstr ""
+
+msgid "Nothing conspicuous found. This is no guarantee: the check only detects known patterns and deviations from official files."
+msgstr ""
+
+msgid "Marked as expected"
+msgstr ""
+
+msgid "Show again"
+msgstr ""
+
+msgid "Automatic check"
+msgstr ""
+
+msgid "Check once a day in the background (in small steps, not while the server is busy)"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Backup plugins can report a finished backup with: do_action( 'empedia_cloud_backup_done' );"
+msgstr ""
+
+msgid "Downloading from the cloud storage …"
+msgstr ""
+
+msgid "Decrypting …"
+msgstr ""
+
+msgid "Saving the current database as a safety copy …"
+msgstr ""
+
+msgid "Restoring files …"
+msgstr ""
+
+msgid "Restoring the database …"
+msgstr ""
+
+msgid "Saving the database …"
+msgstr ""
+
+msgid "Collecting files …"
+msgstr ""
+
+msgid "Packing files …"
+msgstr ""
+
+msgid "Finishing …"
+msgstr ""
+
+msgid "Encrypting …"
+msgstr ""
+
+msgid "Uploading to the cloud storage …"
+msgstr ""
+
+msgid "User not found."
+msgstr ""
+
+msgid "The passkey could not be set up. Please try again."
+msgstr ""
+
+msgid "This browser does not support passkeys."
+msgstr ""
+
+msgid "Your recovery codes. Each works once if you lose this device. Store them safely; they are not shown again:"
+msgstr ""
+
+msgid "Your authenticator app can no longer be read (the security keys of this site were changed). Please set it up again."
+msgstr ""
+
+msgid "Open profile"
+msgstr ""
+
+msgid "Your role requires two-factor authentication. Please set up an authenticator app or a passkey below to continue."
+msgstr ""
+
+msgid "The authenticator app is now active."
+msgstr ""
+
+msgid "The code was not correct. Please try again."
+msgstr ""
+
+msgid "The authenticator app was removed."
+msgstr ""
+
+msgid "The password was not correct."
+msgstr ""
+
+msgid "The passkey was removed."
+msgstr ""
+
+msgid "The second factor of this user was reset."
+msgstr ""
+
+msgid "An authenticator app is already set up. Remove it first to set up a new one."
+msgstr ""
+
+msgid "New recovery codes were created."
+msgstr ""
+
+msgid "Two-factor authentication (EMPEDIAcloud)"
+msgstr ""
+
+msgid "Authenticator app"
+msgstr ""
+
+msgid "Active."
+msgstr ""
+
+msgid "Current password"
+msgstr ""
+
+msgid "Remove authenticator app"
+msgstr ""
+
+msgid "Use an app such as Aegis, 2FAS, Google Authenticator or Microsoft Authenticator to create sign-in codes."
+msgstr ""
+
+msgid "Set up authenticator app"
+msgstr ""
+
+msgid "Scan the code with your app, or enter the key by hand. Then type the 6-digit code to finish."
+msgstr ""
+
+msgid "Activate"
+msgstr ""
+
+msgid "Not set up."
+msgstr ""
+
+msgid "Passkeys"
+msgstr ""
+
+msgid "last used %s"
+msgstr ""
+
+msgid "added %s"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "No passkey set up."
+msgstr ""
+
+msgid "Name (optional)"
+msgstr ""
+
+msgid "Add a passkey"
+msgstr ""
+
+msgid "A passkey uses your device unlock (fingerprint, face or PIN). It only works on this website address."
+msgstr ""
+
+msgid "Passkeys need a secure connection (https)."
+msgstr ""
+
+msgid "Recovery codes"
+msgstr ""
+
+msgid "Unused codes: %d. Each code works once if you lose your device."
+msgstr ""
+
+msgid "Create new recovery codes"
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "Your password"
+msgstr ""
+
+msgid "Remove all second factors of this user"
+msgstr ""
+
+msgid "Use this if the user lost the device and the recovery codes."
+msgstr ""
+
+msgid "Your recovery codes"
+msgstr ""
+
+msgid "Store these codes safely. Each one works once if you cannot use your authenticator app. They are not shown again."
+msgstr ""
+
+msgid "I have saved them"
+msgstr ""
+
+msgid "[%s] A passkey was added to your account"
+msgstr ""
+
+msgid "A passkey (%1$s) was added to your account on %2$s."
+msgstr ""
+
+msgid "If this was you, nothing to do. If not, sign in, remove the passkey in your profile and change your password."
+msgstr ""
+
+msgid "The sign-in protection is switched off by EMPEDIA_CLOUD_PROTECT_OFF in wp-config.php."
+msgstr ""
+
+msgid "Failed sign-in attempts"
+msgstr ""
+
+msgid "Blocks an address for a while after too many failed attempts. Every repeated block lasts twice as long. Addresses are never stored in readable form."
+msgstr ""
+
+msgid "Last 24–48 hours: %1$d failed attempts, %2$d blocks."
+msgstr ""
+
+msgid "Protection"
+msgstr ""
+
+msgid "Security settings"
+msgstr ""
+
+msgid "Block after too many failed attempts"
+msgstr ""
+
+msgid "Attempts per user name"
+msgstr ""
+
+msgid "Attempts per address"
+msgstr ""
+
+msgid "Counting period (minutes)"
+msgstr ""
+
+msgid "First block (minutes)"
+msgstr ""
+
+msgid "Never block these addresses"
+msgstr ""
+
+msgid "One IP address per line, for example your office."
+msgstr ""
+
+msgid "Visitor address"
+msgstr ""
+
+msgid "Connection address (default)"
+msgstr ""
+
+msgid "Header X-Forwarded-For (last entry)"
+msgstr ""
+
+msgid "Header CF-Connecting-IP (Cloudflare)"
+msgstr ""
+
+msgid "Header X-Real-IP"
+msgstr ""
+
+msgid "Only choose a header if your server or CDN sets it; a header that visitors can set themselves would let them avoid the blocks."
+msgstr ""
+
+msgid "Your visitors seem to come through a proxy or CDN: every visitor has the same connection address. Choose the matching header above, otherwise one blocked visitor blocks everyone."
+msgstr ""
+
+msgid "Two-factor authentication and passkeys"
+msgstr ""
+
+msgid "Users set up their second factor on their own profile page. With a passkey, signing in needs no password."
+msgstr ""
+
+msgid "Allow (with recovery codes)"
+msgstr ""
+
+msgid "Allow as second factor"
+msgstr ""
+
+msgid "Show “Sign in with a passkey” on the sign-in page"
+msgstr ""
+
+msgid "Passkeys need a secure connection (https) and the PHP extension OpenSSL."
+msgstr ""
+
+msgid "Passkeys are bound to this website address. If the address changes, they must be created again."
+msgstr ""
+
+msgid "Require for roles"
+msgstr ""
+
+msgid "Users of these roles are sent to their profile page until they have set up a second factor."
+msgstr ""
+
+msgid "Save settings"
+msgstr ""
+
+msgid "If you are locked out"
+msgstr ""
+
+msgid "Add one of these lines to wp-config.php via FTP or your hosting panel, sign in, and remove it again:"
+msgstr ""
+
+msgid "switches the second factor step off"
+msgstr ""
+
+msgid "switches the whole sign-in protection off"
+msgstr ""
+
+msgid "This site is not connected to EMPEDIAcloud."
+msgstr ""
+
+msgid "Backup deleted."
+msgstr ""
+
+msgid "Please type RESTORE to confirm."
+msgstr ""
+
+msgid "Another backup or restore is running."
+msgstr ""
+
+msgid "The backup file was not found."
+msgstr ""
+
+msgid "This backup was made for a different site address and cannot be restored here."
+msgstr ""
+
+msgid "The restore could not be started."
+msgstr ""
+
+msgid "Key saved."
+msgstr ""
+
+msgid "The key is not valid."
+msgstr ""
+
+msgid "The key could not be loaded from EMPEDIAcloud."
+msgstr ""
+
+msgid "The key was loaded from EMPEDIAcloud."
+msgstr ""
+
+msgid "You have no free storage package. Book one first."
+msgstr ""
+
+msgid "The cloud storage is ready."
+msgstr ""
+
+msgid "The backup could not be deleted."
+msgstr ""
+
+msgid "Please fill in: %s"
+msgstr ""
+
+msgid "The target was saved, but the connection test failed (%s). Please check the details."
+msgstr ""
+
+msgid "The storage target works and is saved."
+msgstr ""
+
+msgid "The storage target was removed. Backups stored there were not deleted."
+msgstr ""
+
+msgid "The connection test failed (%s)."
+msgstr ""
+
+msgid "The connection works."
+msgstr ""
+
+msgid "This storage service is not available for your account yet."
+msgstr ""
+
+msgid "The connection to the storage service was cancelled or failed."
+msgstr ""
+
+msgid "The connection to the storage service failed."
+msgstr ""
+
+msgid "The account was connected, but a test file could not be stored."
+msgstr ""
+
+msgid "The storage service is connected."
+msgstr ""
+
+msgid "Cloud storage"
+msgstr ""
+
+msgid "Connect this site with EMPEDIAcloud to store backups in the cloud."
+msgstr ""
+
+msgid "The storage state could not be loaded. Please try again later."
+msgstr ""
+
+msgid "%1$s of %2$s used"
+msgstr ""
+
+msgid "The storage package ended. Your backups are kept for a short time and will then be deleted. Book a package again to keep them."
+msgstr ""
+
+msgid "No backups in the cloud yet."
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "You have a storage package that is not used yet."
+msgstr ""
+
+msgid "Set up the cloud storage"
+msgstr ""
+
+msgid "Store your encrypted backups safely outside of your server, in a European data center. Choose a storage package in EMPEDIAcloud."
+msgstr ""
+
+msgid "Choose a storage package"
+msgstr ""
+
+msgid "Leave empty to keep the saved value"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Save and test"
+msgstr ""
+
+msgid "Your own storage targets"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "The saved details cannot be read. Please enter them again."
+msgstr ""
+
+msgid "The connection was revoked or expired. Please connect the account again."
+msgstr ""
+
+msgid "Last test failed (%s)"
+msgstr ""
+
+msgid "Works"
+msgstr ""
+
+msgid "Not tested yet"
+msgstr ""
+
+msgid "Paused"
+msgstr ""
+
+msgid "Test"
+msgstr ""
+
+msgid "Pause"
+msgstr ""
+
+msgid "Resume"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit %s"
+msgstr ""
+
+msgid "Add a storage target"
+msgstr ""
+
+msgid "Choose …"
+msgstr ""
+
+msgid "Connect %s"
+msgstr ""
+
+msgid "The backups in this target could not be listed."
+msgstr ""
+
+msgid "No backups in this target yet."
+msgstr ""
+
+msgid "Starting the backup …"
+msgstr ""
+
+msgid "Restore this backup? Content created since then will be lost. A safety copy of the current database is saved first. You may be signed out afterwards."
+msgstr ""
+
+msgid "Delete this backup?"
+msgstr ""
+
+msgid "Backups"
+msgstr ""
+
+msgid "Backups are stored on this server in a folder that is closed for web access. Backups on the same server do not protect you if the server is lost: download important ones or connect an external target."
+msgstr ""
+
+msgid "The last backup failed."
+msgstr ""
+
+msgid "The last upload failed for: %s. The backup is still available on this server."
+msgstr ""
+
+msgid "A backup was restored."
+msgstr ""
+
+msgid "The restore failed. Your site was not changed beyond the safety copy."
+msgstr ""
+
+msgid "Back up now"
+msgstr ""
+
+msgid "Saved backups"
+msgstr ""
+
+msgid "No backups yet."
+msgstr ""
+
+msgid "Files and database"
+msgstr ""
+
+msgid "Files"
+msgstr ""
+
+msgid "Database"
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Encrypted"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Files only"
+msgstr ""
+
+msgid "Database only"
+msgstr ""
+
+msgid "Automatic backup"
+msgstr ""
+
+msgid "Off"
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Weekly (Sundays)"
+msgstr ""
+
+msgid "Keep the last"
+msgstr ""
+
+msgid "backups"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Encrypt new backups"
+msgstr ""
+
+msgid "Without the key an encrypted backup cannot be opened. Save the key below somewhere safe."
+msgstr ""
+
+msgid "Storage targets"
+msgstr ""
+
+msgid "Also upload backups to my storage targets (always encrypted)"
+msgstr ""
+
+msgid "backups in each target"
+msgstr ""
+
+msgid "Exclude folders"
+msgstr ""
+
+msgid "One path per line, relative to the WordPress folder. Cache folders and other backups are always left out."
+msgstr ""
+
+msgid "Encryption key"
+msgstr ""
+
+msgid "This key opens your encrypted backups. Keep a copy outside this server."
+msgstr ""
+
+msgid "Enter a saved key (e.g. after moving the site)"
+msgstr ""
+
+msgid "Use this key"
+msgstr ""
+
+msgid "With a cloud storage your key is also kept safely in EMPEDIAcloud, so you can restore your site on a new server."
+msgstr ""
+
+msgid "Load the key from EMPEDIAcloud"
+msgstr ""
+
+msgid "Folder"
+msgstr ""
+
+msgid "Folder for the backups, for example empedia-backups. It is created if needed."
+msgstr ""
+
+msgid "S3-compatible storage"
+msgstr ""
+
+msgid "Endpoint"
+msgstr ""
+
+msgid "For example https://s3.eu-central-1.amazonaws.com or the address of your provider."
+msgstr ""
+
+msgid "Region"
+msgstr ""
+
+msgid "For example eu-central-1. Many providers accept the default."
+msgstr ""
+
+msgid "Bucket"
+msgstr ""
+
+msgid "Access key"
+msgstr ""
+
+msgid "Secret key"
+msgstr ""
+
+msgid "WebDAV (Nextcloud, ownCloud, …)"
+msgstr ""
+
+msgid "WebDAV address"
+msgstr ""
+
+msgid "For Nextcloud: https://cloud.example.com/remote.php/dav/files/USER"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Use an app password if your service offers one."
+msgstr ""
+
+msgid "FTP / FTPS"
+msgstr ""
+
+msgid "Server"
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "Default 21."
+msgstr ""
+
+msgid "Encrypt the connection (FTPS)"
+msgstr ""
+
+msgid "Strongly recommended. Plain FTP sends the password unencrypted."
+msgstr ""
+
+msgid "EMPEDIAcloud storage"
+msgstr ""
+
+msgid "The connection request expired. Please start again."
+msgstr ""
+
+msgid "EMPEDIAcloud returned an error. Please try again later."
+msgstr ""
+
+msgid "The code is invalid, expired or already used."
+msgstr ""
+
+msgid "The connection could not be confirmed. Please start again."
+msgstr ""
+
+msgid "The code was created for a different site."
+msgstr ""
+
+msgid "All site slots of your plan are in use. Disconnect a site or extend your plan."
+msgstr ""
+
+msgid "This domain is already connected to another WordPress installation."
+msgstr ""
+
+msgid "The site must be reachable via https to connect."
+msgstr ""
+
+msgid "The address of this site is not valid for EMPEDIAcloud (no port numbers or credentials allowed)."
+msgstr ""
+
+msgid "The connection was ended in EMPEDIAcloud. Please connect again."
+msgstr ""
+
+msgid "This feature is not available for your account yet."
+msgstr ""
+
+msgid "The domain is not verified yet."
+msgstr ""
+
+msgid "Several scans were already started in the last hour. Please try again later."
+msgstr ""
+
+msgid "Too many requests. Please try again later."
+msgstr ""
+
+msgid "Bot protection is not available for your account yet."
+msgstr ""
+
+msgid "The domain could not be used for bot protection."
+msgstr ""
+
+msgid "This is part of the Pro plan of EMPEDIAcloud."
+msgstr ""
+
+msgid "This site is idle because all slots of your plan are in use."
+msgstr ""
+
+msgid "SQL injection"
+msgstr ""
+
+msgid "Script injection (XSS)"
+msgstr ""
+
+msgid "File inclusion and path traversal"
+msgstr ""
+
+msgid "PHP uploads (visitors)"
+msgstr ""
+
+msgid "Known attack tools"
+msgstr ""
+
+msgid "Probing for sensitive files"
+msgstr ""
+
+msgid "XML-RPC abuse"
+msgstr ""
+
+msgid "Too many requests (sign-in, XML-RPC)"
+msgstr ""
+
+msgid "Blocked addresses and countries"
+msgstr ""
+
+msgid "The firewall is on. All rules only report (observe mode); nothing is blocked yet."
+msgstr ""
+
+msgid "The firewall is off."
+msgstr ""
+
+msgid "A rule group can only start blocking after 72 hours of observation. Tick “block anyway” to override."
+msgstr ""
+
+msgid "Your own address was removed from the blocked addresses."
+msgstr ""
+
+msgid "Your own country was removed from the blocked countries."
+msgstr ""
+
+msgid "Your own country was added to the allowed countries."
+msgstr ""
+
+msgid "Noted: this kind of request is no longer reported by this rule."
+msgstr ""
+
+msgid "The sample is no longer available."
+msgstr ""
+
+msgid "The firewall now loads before other plugins."
+msgstr ""
+
+msgid "The folder wp-content/mu-plugins cannot be created or written by WordPress. Nothing was changed. The firewall keeps running as a normal plugin; if you want the early start, create the file by hand or ask your host to make the folder writable."
+msgstr ""
+
+msgid "The early loader was removed."
+msgstr ""
+
+msgid "Firewall"
+msgstr ""
+
+msgid "Checks every request very early for typical attacks (SQL injection, scripts in addresses and forms, file inclusion, PHP uploads by visitors, known attack tools, probing for sensitive files, XML-RPC abuse, too many requests, blocked addresses). Every rule group starts in observe mode: matches are only counted and sampled, nothing is blocked. After at least 72 hours without false alarms you can let a group block (answer 403). IP addresses are never stored."
+msgstr ""
+
+msgid "The firewall is switched off by EMPEDIA_CLOUD_FIREWALL_OFF in wp-config.php."
+msgstr ""
+
+msgid "The firewall was paused in EMPEDIAcloud (emergency switch)."
+msgstr ""
+
+msgid "Blocking was paused in EMPEDIAcloud: all rules only observe."
+msgstr ""
+
+msgid "The firewall is on."
+msgstr ""
+
+msgid "Switch off"
+msgstr ""
+
+msgid "Switch on (observe mode)"
+msgstr ""
+
+msgid "Emergency exit: add define( 'EMPEDIA_CLOUD_FIREWALL_OFF', true ); to wp-config.php. A class that blocks more than 300 requests in a minute pauses itself for 30 minutes."
+msgstr ""
+
+msgid "Rule groups"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Mode"
+msgstr ""
+
+msgid "Last 7 days"
+msgstr ""
+
+msgid "Observed for"
+msgstr ""
+
+msgid "Observe only"
+msgstr ""
+
+msgid "Block"
+msgstr ""
+
+msgid "block anyway (less than 72 hours observed)"
+msgstr ""
+
+msgid "%1$d matches, %2$d blocked, %3$d marked legitimate"
+msgstr ""
+
+msgid "Addresses and countries"
+msgstr ""
+
+msgid "Never inspect these addresses"
+msgstr ""
+
+msgid "One address or range (CIDR) per line, for example your office."
+msgstr ""
+
+msgid "Always block these addresses"
+msgstr ""
+
+msgid "Block these countries"
+msgstr ""
+
+msgid "Allow only these countries"
+msgstr ""
+
+msgid "Country rules need a header from your CDN or server (for example CF-IPCountry from Cloudflare); without such a header they do nothing. They follow the mode of the group “Blocked addresses and countries”."
+msgstr ""
+
+msgid "Exceptions"
+msgstr ""
+
+msgid "Remove all %d exceptions marked as legitimate"
+msgstr ""
+
+msgid "Latest matches"
+msgstr ""
+
+msgid "No matches yet."
+msgstr ""
+
+msgid "A few samples per rule and minute. If a request was legitimate, mark it: the rule then stays quiet for this field and the cloud counts it as a false alarm."
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Rule"
+msgstr ""
+
+msgid "Field"
+msgstr ""
+
+msgid "Excerpt"
+msgstr ""
+
+msgid "blocked"
+msgstr ""
+
+msgid "Legitimate"
+msgstr ""
+
+msgid "Early start (optional)"
+msgstr ""
+
+msgid "Plugins that load before this plugin have already processed a request when the firewall runs. If you want the firewall to run first, you can install a small “must-use” file. This is optional and only happens when you click the button."
+msgstr ""
+
+msgid "What the button does: it writes one small file (empedia-shield-firewall.php) into the folder wp-content/mu-plugins. The file has a fixed content and does nothing but load the firewall of this plugin first. The button “Remove early loader” deletes it again; it is also removed when you deactivate or delete the plugin. Without it, the firewall works as a normal plugin."
+msgstr ""
+
+msgid "The early loader is installed."
+msgstr ""
+
+msgid "Remove early loader"
+msgstr ""
+
+msgid "An early loader of an earlier version is installed. Installing the new one replaces it."
+msgstr ""
+
+msgid "Install early loader"
+msgstr ""
+
+msgid "Connect this site to EMPEDIAcloud first, or enter the keys by hand below."
+msgstr ""
+
+msgid "Your bot protection plan has no free domain left. Choose a bot protection plan in EMPEDIAcloud to protect more domains."
+msgstr ""
+
+msgid "Bot protection is active for your forms. The sign-in form is left out on purpose: try it in a second browser window first, then switch it on below."
+msgstr ""
+
+msgid "The separate plugin “EMPEDIAcaptcha” is still active and runs the bot protection. Deactivate and delete it on the Plugins page – your keys and settings are kept and then managed here."
+msgstr ""
+
+msgid "Protected forms and options"
+msgstr ""
+
+msgid "%1$s of %2$s checks used this month"
+msgstr ""
+
+msgid "The included checks are used up. Until the next month, forms are no longer protected. Choose a larger plan to continue right away."
+msgstr ""
+
+msgid "You are close to the included checks. Choose a larger plan so protection does not stop."
+msgstr ""
+
+msgid "Choose a bot protection plan"
+msgstr ""
+
+msgid "Protect forms from bots"
+msgstr ""
+
+msgid "EMPEDIAcaptcha protects the sign-in, registration, password reset, comment and shop forms without cookies and without puzzles for your visitors. It needs a site key and a secret key of the EMPEDIAcaptcha service: enter them below, or let this page create them for you when the site is connected to EMPEDIAcloud."
+msgstr ""
+
+msgid "Not connected to EMPEDIAcloud: enter the keys by hand below, or connect first to have them set up for you."
+msgstr ""
+
+msgid "Go to the connection"
+msgstr ""
+
+msgid "Automatic setup is not available for your account yet. You can enter the keys by hand below."
+msgstr ""
+
+msgid "Active for this site."
+msgstr ""
+
+msgid "Not active yet."
+msgstr ""
+
+msgid "Renew the keys"
+msgstr ""
+
+msgid "Activate bot protection"
+msgstr ""
+
+msgid "The passkey could not be verified."
+msgstr ""
+
+msgid "This device"
+msgstr ""
+
+msgid "Passkey"
+msgstr ""
+
+msgid "<strong>Error:</strong> Too many failed attempts. Please try again in %d minutes."
+msgstr ""
+
+msgid "<strong>Error:</strong> This account uses two-factor authentication. Use an application password for XML-RPC."
+msgstr ""
+
+msgid "<strong>Error:</strong> The code is not valid. Please try again."
+msgstr ""
+
+msgid "Two-factor authentication"
+msgstr ""
+
+msgid "Authentication code or recovery code"
+msgstr ""
+
+msgid "Recovery code"
+msgstr ""
+
+msgid "Verify"
+msgstr ""
+
+msgid "Confirm your sign-in with your passkey."
+msgstr ""
+
+msgid "Use a passkey"
+msgstr ""
+
+msgid "Back to sign-in"
+msgstr ""
+
+msgid "The passkey could not be used. Please try again or use another method."
+msgstr ""
+
+msgid "Sign in with a passkey"
+msgstr ""
+
+msgid "Too many attempts. Please try again later."
+msgstr ""
+
+msgid "<strong>Error:</strong> The passkey could not be used."
+msgstr ""
+
+msgid "<strong>Error:</strong> The second step expired. Please sign in again."
+msgstr ""
+
+msgid "Spam"
+msgstr ""
+
+msgid "Trash"
+msgstr ""
+
+msgid "Pending approval"
+msgstr ""
+
+msgid "Approved"
+msgstr ""
+
+msgid "Choose which comments to delete."
+msgstr ""
+
+msgid "Please confirm that approved comments may be deleted for good."
+msgstr ""
+
+msgid "%1$d comments deleted, %2$d are left. Run the deletion again."
+msgstr ""
+
+msgid "%d comments deleted."
+msgstr ""
+
+msgid "Switch comments off"
+msgstr ""
+
+msgid "Closes comments (and optionally trackbacks) without deleting anything: existing comments stay in the database, and turning this off brings everything back. Comments can also be closed for single posts in the editor."
+msgstr ""
+
+msgid "Leave comments as they are"
+msgstr ""
+
+msgid "Off everywhere (also hides the comments menu, feeds and the comments REST/XML-RPC interfaces)"
+msgstr ""
+
+msgid "Off only for these content types:"
+msgstr ""
+
+msgid "Where"
+msgstr ""
+
+msgid "Old content"
+msgstr ""
+
+msgid "Close comments on content older than"
+msgstr ""
+
+msgid "days (0 = never)"
+msgstr ""
+
+msgid "Existing comments"
+msgstr ""
+
+msgid "Also hide existing comments where comments are off"
+msgstr ""
+
+msgid "Pingbacks and trackbacks"
+msgstr ""
+
+msgid "Switch them off on the whole site (also stops pingback spam through XML-RPC)"
+msgstr ""
+
+msgid "Check comments"
+msgstr ""
+
+msgid "Comments are checked for spam by EMPEDIAcaptcha: a bot check without puzzles for visitors and, optionally, a content check (from the Pro package). Set it up first."
+msgstr ""
+
+msgid "Set up bot protection"
+msgstr ""
+
+msgid "New comments"
+msgstr ""
+
+msgid "Bot check on the comment form"
+msgstr ""
+
+msgid "Content check: suspicious comments are held as spam, clear abuse is rejected (Pro package, every check counts as a request)"
+msgstr ""
+
+msgid "Runs the content check over comments that are already there. Suspicious comments are moved to spam, not deleted, so you can restore them. Only comments by visitors are checked; every checked comment counts as one request of your EMPEDIAcaptcha package."
+msgstr ""
+
+msgid "Check"
+msgstr ""
+
+msgid "comments waiting for approval (%d)"
+msgstr ""
+
+msgid "approved comments (%d)"
+msgstr ""
+
+msgid "both (%d)"
+msgstr ""
+
+msgid "Check now"
+msgstr ""
+
+msgid "%1$d checked, %2$d moved to spam …"
+msgstr ""
+
+msgid "Done: %1$d checked, %2$d moved to spam."
+msgstr ""
+
+msgid "The content check cannot be reached right now. Please try again later."
+msgstr ""
+
+msgid "Start the check? Every checked comment counts as one request of your EMPEDIAcaptcha package."
+msgstr ""
+
+msgid "Delete comments"
+msgstr ""
+
+msgid "Deletes comments for good – this cannot be undone. Make a backup first if you are unsure. Large amounts are deleted in rounds of about 15 seconds; run it again until nothing is left."
+msgstr ""
+
+msgid "Delete these comments for good?"
+msgstr ""
+
+msgid "Which comments"
+msgstr ""
+
+msgid "Older than"
+msgstr ""
+
+msgid "days (0 = every age)"
+msgstr ""
+
+msgid "Kind"
+msgstr ""
+
+msgid "Only pingbacks and trackbacks"
+msgstr ""
+
+msgid "Approved comments"
+msgstr ""
+
+msgid "I know that approved comments are deleted for good (required when “Approved” is ticked)"
+msgstr ""
+
+msgid "Sign in with EMPEDIAcloud"
+msgstr ""
+
+msgid "<strong>Error:</strong> Your EMPEDIAcloud account may not sign in to this site."
+msgstr ""
+
+msgid "<strong>Error:</strong> No account on this site matches your EMPEDIAcloud account. Ask an administrator to create one with the same e-mail address."
+msgstr ""
+
+msgid "<strong>Error:</strong> The sign-in took too long. Please try again."
+msgstr ""
+
+msgid "<strong>Error:</strong> Too many failed attempts. Please try again later."
+msgstr ""
+
+msgid "<strong>Error:</strong> The sign-in with EMPEDIAcloud failed. Please try again or use your password."
+msgstr ""
+
+msgid "Signing in with EMPEDIAcloud is part of the Pro level of this site."
+msgstr ""
+
+msgid "Signing in with EMPEDIAcloud is on."
+msgstr ""
+
+msgid "Signing in with EMPEDIAcloud is off."
+msgstr ""
+
+msgid "Members of your EMPEDIAcloud organization (and of your agency) can sign in here with their EMPEDIAcloud account, including its passkeys. Nobody gets an account automatically: a user must already exist on this site with the same, verified e-mail address. The password sign-in stays available."
+msgstr ""
+
+msgid "Signing in with EMPEDIAcloud is switched off by wp-config.php."
+msgstr ""
+
+msgid "Connect this site to EMPEDIAcloud first."
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+msgid "Turn off"
+msgstr ""
+
+msgid "Turn on"
+msgstr ""
+
+msgid "Emergency exit: add define( 'EMPEDIA_CLOUD_SSO_OFF', true ); to wp-config.php."
+msgstr ""
+
+msgid "Unknown action."
+msgstr ""
+
+msgid "The folder could not be determined."
+msgstr ""
+
+msgid "The file could not be written. Please check the permissions of the folder."
+msgstr ""
+
+msgid "<strong>Error:</strong> The login details are incorrect."
+msgstr ""
+
+msgid "EMPEDIA Shield"
+msgstr ""
+
+msgid "Starting the scan …"
+msgstr ""
+
+msgid "The scan is running. This can take several minutes."
+msgstr ""
+
+msgid "The scan is finished."
+msgstr ""
+
+msgid "View the report in EMPEDIAcloud"
+msgstr ""
+
+msgid "The scan could not be completed."
+msgstr ""
+
+msgid "The site is connected. The first data will appear in a few minutes."
+msgstr ""
+
+msgid "EMPEDIAcloud: the connection was ended in your account."
+msgstr ""
+
+msgid "Connect again"
+msgstr ""
+
+msgid "Please enter the connection code exactly as shown in EMPEDIAcloud (ECW-XXXX-XXXX-XXXX)."
+msgstr ""
+
+msgid "The site is connected."
+msgstr ""
+
+msgid "The setting was applied."
+msgstr ""
+
+msgid "The setting was reverted."
+msgstr ""
+
+msgid "The data was sent to EMPEDIAcloud."
+msgstr ""
+
+msgid "The domain is verified."
+msgstr ""
+
+msgid "The verification file could not be read yet. Please check that the address below opens in a browser and try again."
+msgstr ""
+
+msgid "The connection was ended."
+msgstr ""
+
+msgid "This site is paused in EMPEDIAcloud because all places of your plan are in use."
+msgstr ""
+
+msgid "This site is paused in EMPEDIAcloud because all places of your plan are in use. The cloud does not evaluate its data right now; the protection in this plugin keeps working. Free a place by disconnecting another site, or add more sites to your plan."
+msgstr ""
+
+msgid "View plans"
+msgstr ""
+
+msgid "Hide this notice"
+msgstr ""
+
+msgid "High"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Low"
+msgstr ""
+
+msgid "Overview"
+msgstr ""
+
+msgid "Sign-in protection"
+msgstr ""
+
+msgid "Bot protection"
+msgstr ""
+
+msgid "Comments"
+msgstr ""
+
+msgid "Connect this site"
+msgstr ""
+
+msgid "Connect this site with your EMPEDIAcloud account to see how well it is protected, which known vulnerabilities affect WordPress, plugins and themes, and to be alerted when it is not reachable."
+msgstr ""
+
+msgid "Connect with EMPEDIAcloud"
+msgstr ""
+
+msgid "You need an EMPEDIAcloud account."
+msgstr ""
+
+msgid "Create an account"
+msgstr ""
+
+msgid "With a connection code"
+msgstr ""
+
+msgid "Agencies can create a connection code in EMPEDIAcloud (WordPress → Connect a site) and enter it here, so no sign-in is needed on the client’s site."
+msgstr ""
+
+msgid "Connect"
+msgstr ""
+
+msgid "What is sent"
+msgstr ""
+
+msgid "Versions of WordPress, PHP and the database, and the list of plugins and themes with their versions."
+msgstr ""
+
+msgid "Security-relevant settings as yes/no values and the number of administrators."
+msgstr ""
+
+msgid "The address of this site. The plugin also requests a few addresses of this site itself (for example the uploads folder) to measure how it responds."
+msgstr ""
+
+msgid "Not sent: content, posts, visitor data, user names, e-mail addresses or passwords."
+msgstr ""
+
+msgid "No PHP in the uploads folder"
+msgstr ""
+
+msgid "Blocks the execution of PHP files in wp-content/uploads (.htaccess)."
+msgstr ""
+
+msgid "Switch off the file editor"
+msgstr ""
+
+msgid "Removes the theme and plugin editor from the dashboard."
+msgstr ""
+
+msgid "Protect the debug log"
+msgstr ""
+
+msgid "Blocks public access to wp-content/debug.log (.htaccess)."
+msgstr ""
+
+msgid "Hide the user list in the REST API"
+msgstr ""
+
+msgid "Visitors who are not signed in can no longer list user names."
+msgstr ""
+
+msgid "Automatic minor WordPress updates"
+msgstr ""
+
+msgid "Security releases of WordPress are installed automatically."
+msgstr ""
+
+msgid "Security headers"
+msgstr ""
+
+msgid "Sends X-Content-Type-Options, X-Frame-Options and a referrer policy."
+msgstr ""
+
+msgid "Switch off XML-RPC"
+msgstr ""
+
+msgid "Closes xmlrpc.php, a common target for password guessing."
+msgstr ""
+
+msgid "Block user name guessing"
+msgstr ""
+
+msgid "Stops ?author=1 requests and the users sitemap from revealing user names."
+msgstr ""
+
+msgid "Hide the WordPress version"
+msgstr ""
+
+msgid "Removes the generator tag from pages and feeds."
+msgstr ""
+
+msgid "Neutral sign-in errors"
+msgstr ""
+
+msgid "The sign-in form no longer says whether the user name or the password was wrong."
+msgstr ""
+
+msgid "Security settings (work without a connection)"
+msgstr ""
+
+msgid "These settings can be applied and reverted at any time. Nothing touches wp-config.php; file based settings only write a clearly marked block into an .htaccess file. When the site is connected to EMPEDIAcloud, it also runs a security check of your site and shows which of them are needed."
+msgstr ""
+
+msgid "Applied"
+msgstr ""
+
+msgid "Not applied"
+msgstr ""
+
+msgid "Revert"
+msgstr ""
+
+msgid "Secure now"
+msgstr ""
+
+msgid "Pro"
+msgstr ""
+
+msgid "Free"
+msgstr ""
+
+msgid "Idle"
+msgstr ""
+
+msgid "Last data sent %s ago."
+msgstr ""
+
+msgid "No data sent yet."
+msgstr ""
+
+msgid "Send data now"
+msgstr ""
+
+msgid "Start security scan"
+msgstr ""
+
+msgid "Disconnect"
+msgstr ""
+
+msgid "EMPEDIAcloud is not reachable right now. Showing the state from %s ago."
+msgstr ""
+
+msgid "This site is idle because all site slots of your plan are in use. It stays connected, but is not evaluated until a slot is free."
+msgstr ""
+
+msgid "The first data is on its way. Reload this page in a few minutes or click “Send data now”."
+msgstr ""
+
+msgid "Open this site in EMPEDIAcloud"
+msgstr ""
+
+msgid "Verify the domain"
+msgstr ""
+
+msgid "EMPEDIAcloud has to be sure that this domain belongs to you before scans and monitoring can run. The plugin delivers a small proof file by itself."
+msgstr ""
+
+msgid "Check again"
+msgstr ""
+
+msgid "Protection"
+msgstr ""
+
+msgid "Known vulnerabilities"
+msgstr ""
+
+msgid "%1$d high · %2$d medium · %3$d low"
+msgstr ""
+
+msgid "Data source not reachable"
+msgstr ""
+
+msgid "Updates available"
+msgstr ""
+
+msgid "Plugins %1$d · Themes %2$d"
+msgstr ""
+
+msgid "WordPress"
+msgstr ""
+
+msgid "Outside scan"
+msgstr ""
+
+msgid "Online"
+msgstr ""
+
+msgid "Unreachable"
+msgstr ""
+
+msgid "Not known yet"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "“Secure now” changes the setting with the plugin and can be reverted at any time. Everything else you do yourself – the instructions are shown with each point."
+msgstr ""
+
+msgid "Severity"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Action needed"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "The rule was written, but the site still answers as before. Your web server may ignore .htaccess files (for example nginx): please add the rule to the server configuration or ask your host. A cache can also serve an older copy – clear it and measure again."
+msgstr ""
+
+msgid "The setting is active, but the site still answers visitors as before. This is usually a page cache, a CDN or a server cache that serves an older copy, or another plugin that overrides the setting. Clear the caches and measure again."
+msgstr ""
+
+msgid "The setting is active, but the last measurement still showed the old state. Measure again; if it stays open, a cache or another plugin is probably overriding it."
+msgstr ""
+
+msgid "Measure again"
+msgstr ""
+
+msgid "The setting was measured again."
+msgstr ""
+
+msgid "The vulnerability database could not be reached. This is checked again automatically."
+msgstr ""
+
+msgid "No vulnerabilities are known for the detected versions."
+msgstr ""
+
+msgid "Data: WPVulnerability (CC0). Findings are hints, not a guarantee."
+msgstr ""
+
+msgid "This site is not connected to EMPEDIAcloud yet."
+msgstr ""
+
+msgid "No data yet."
+msgstr ""
+
+msgid "Open EMPEDIAcloud"
+msgstr ""
+
+msgid "Protection: %1$s %2$s"
+msgstr ""
+
+msgid "High vulnerabilities: %d"
+msgstr ""
+
+msgid "Open points in the security check: %d"
+msgstr ""
+
+msgid "Backup: the last backup failed"
+msgstr ""
+
+msgid "Backup: upload to a storage target failed"
+msgstr ""
+
+msgid "Backup: overdue"
+msgstr ""
+
+msgid "Backup: none yet"
+msgstr ""
+
+msgid "Bot protection: switched off (wp-config.php)"
+msgstr ""
+
+msgid "Bot protection: not set up yet"
+msgstr ""
+
+msgid "Bot protection: active on %1$d forms, %2$d refused checks recorded"
+msgstr ""
+
+msgid "The storage of your account is full."
+msgstr ""
+
+msgid "The provider denied access. Please connect the account again."
+msgstr ""
+
+msgid "The storage provider returned an error."
+msgstr ""
+
+msgid "The security check failed. Please try again."
+msgstr ""
+
+msgid "Sign-in"
+msgstr ""
+
+msgid "Registration"
+msgstr ""
+
+msgid "Lost password"
+msgstr ""
+
+msgid "Bot protection is switched off by EMPEDIA_CAPTCHA_OFF in wp-config.php."
+msgstr ""
+
+msgid "Emergency exit if you cannot sign in any more: add define( 'EMPEDIA_CAPTCHA_OFF', true ); to wp-config.php – or rename the plugin folder."
+msgstr ""
+
+msgid "Service address"
+msgstr ""
+
+msgid "Site key"
+msgstr ""
+
+msgid "set in wp-config.php (EMPEDIA_CAPTCHA_SECRET)"
+msgstr ""
+
+msgid "Better in <code>wp-config.php</code>: <code>define('EMPEDIA_CAPTCHA_SECRET', '…');</code> – then it is not stored in the database."
+msgstr ""
+
+msgid "Protected forms"
+msgstr ""
+
+msgid "Content check"
+msgstr ""
+
+msgid "Also check the content of comments and Contact Form 7 messages (from the Pro package)"
+msgstr ""
+
+msgid "When the service is unavailable"
+msgstr ""
+
+msgid "Let requests pass (recommended – otherwise nobody can sign in during an outage)"
+msgstr ""
+
+msgid "Page gate"
+msgstr ""
+
+msgid "Check in front of the whole website (search engines, sign-in and administration stay free)"
+msgstr ""
+
+msgid "The page gate must also be switched on for this domain in the EMPEDIAcaptcha service."
+msgstr ""
+
+msgid "No check token arrived: the script was not loaded or run in the browser (ad blocker, caching or optimization plugin, content security policy?)."
+msgstr ""
+
+msgid "The token was invalid (changed or expired)."
+msgstr ""
+
+msgid "The token had expired or was already used (page open for a long time or delivered from a cache)."
+msgstr ""
+
+msgid "The token comes from a different form."
+msgstr ""
+
+msgid "The secret key is wrong (after renewing the key in the EMPEDIAcaptcha service, enter the new key here)."
+msgstr ""
+
+msgid "No secret key is entered."
+msgstr ""
+
+msgid "Too many checks from this server in a short time."
+msgstr ""
+
+msgid "Recently refused checks"
+msgstr ""
+
+msgid "Form"
+msgstr ""
+
+msgid "Reason"
+msgstr ""
+
+msgid "Cloud free tier: alerts, sign-in with your EMPEDIAcloud account and backup targets with sign-in (Google Drive and others) are part of Pro. The plugin itself is fully usable."
+msgstr ""
+
+msgid "Everything in this plugin works without a plan: security settings, sign-in protection, file check, firewall, backups and bot protection. The optional EMPEDIAcloud connection of this site is on the free tier; availability alerts, alerts for files, changes and backups, sign-in with your EMPEDIAcloud account and backup targets with sign-in (Google Drive, OneDrive, Dropbox, Box, pCloud) come with Pro."
+msgstr ""
+
+msgid "Send your encrypted backups to your own server or cloud account: S3-compatible storage, Nextcloud or another WebDAV server, an FTP or FTPS server, and with the add-on “EMPEDIA Shield SFTP” an SFTP server. These targets work on this site alone, without an EMPEDIAcloud account. The files are encrypted on your site before they leave it."
+msgstr ""
+
+msgid "This target needs the add-on plugin “%s”. Install and activate it to use this target. Backups already stored there are not affected."
+msgstr ""
+
+msgid "Online storage with sign-in"
+msgstr ""
+
+msgid "Google Drive, OneDrive, Dropbox, Box and pCloud are part of the Pro plan of EMPEDIAcloud: the sign-in runs through EMPEDIAcloud."
+msgstr ""
+
+msgid "Google Drive, OneDrive, Dropbox, Box and pCloud sign in through EMPEDIAcloud: they need a connection of this site to EMPEDIAcloud and its Pro plan. All targets above work without it."
+msgstr ""
+
+#: includes/class-empedia-plugin.php
+msgid "EMPEDIA Shield protects this site locally (sign-in protection, file check, firewall, backups). Without a connection to EMPEDIAcloud nothing is sent to the plugin author. The firewall stores only counters per rule and day and a few samples without IP addresses; sign-in protection stores failed-attempt counters and, with the optional second factor, the factors of each user in the site database."
+msgstr ""
+
+#: includes/class-empedia-plugin.php
+msgid "If you connect the site to EMPEDIAcloud (urbanstudio GmbH, Germany, https://empedia.cloud), the plugin sends a technical inventory: WordPress, PHP and database versions, the list of plugins and themes with versions, security settings, file check results (paths and rule names, no file contents) and the number of administrators. It does not send names, e-mail addresses or content. EMPEDIAcloud also reaches the public site to check availability and to scan it."
+msgstr ""
+
+#: includes/class-empedia-plugin.php
+msgid "Optional services: bot protection (EMPEDIAcaptcha) sends the check token and, with the content check, the text of a form entry and the visitor IP address to the configured service address; backups can be stored on your own storage target or at EMPEDIAcloud backup storage (encrypted on this site before they leave it). Please describe the services you switch on, and name the bot protection service in the section about forms and comments."
+msgstr ""
+
+#. translators: 1: HTTP status code, 2: host name, 3: response headers that concern caching
+#: includes/class-empedia-admin.php
+msgid "Last measurement: HTTP %1$s from %2$s%3$s."
+msgstr ""

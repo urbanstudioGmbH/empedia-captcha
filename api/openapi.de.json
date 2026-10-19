@@ -1,0 +1,1883 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "EMPEDIAcaptcha API",
+    "version": "1.0.1",
+    "description": "Verwaltung von EMPEDIAcaptcha-Domains, Regeln und Statistiken. Die Prüfung von Tokens und Inhalten ist in den SDK-Anleitungen beschrieben.",
+    "contact": {
+      "name": "urbanstudio GmbH",
+      "email": "service@urbanstudio.de",
+      "url": "https://urbanstudio.de"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://empedia.cloud"
+    }
+  ],
+  "tags": [
+    {
+      "name": "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+    }
+  ],
+  "paths": {
+    "/api/captcha/sites": {
+      "get": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-list",
+        "summary": "Domains von EMPEDIAcaptcha",
+        "description": "Listet die Domains (registrierbare Domain mit allen Subdomains) der Organisation mit Schlüsseln (Site-Key), Hosts, Modus, Status und Kennzahlen der letzten 30 Tage. Das Secret wird nie geliefert.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesListResponse"
+                },
+                "example": {
+                  "success": true,
+                  "sites": [
+                    {
+                      "id": "uuid",
+                      "name": "urbanstudio.de",
+                      "sitekey": "ek_site_…",
+                      "hosts": [
+                        "urbanstudio.de",
+                        "*.urbanstudio.de"
+                      ],
+                      "mode": "balanced",
+                      "status": "active",
+                      "observe": false,
+                      "ok_30d": 1234,
+                      "rejected_30d": 56
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:read"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:read"
+          ],
+          "mode": "all"
+        }
+      },
+      "post": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-create",
+        "summary": "Domain anlegen",
+        "description": "Legt eine Domain an. Alle Hosts müssen zur selben registrierbaren Domain gehören (`example.com`, `*.example.com`). Das Secret steht **nur in dieser Antwort**.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesCreateResponse"
+                },
+                "example": {
+                  "success": true,
+                  "site": {
+                    "id": "uuid",
+                    "sitekey": "ek_site_…"
+                  },
+                  "secret": "ek_secret_…"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid_host / multiple_domains",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "site_limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:write"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:write"
+          ],
+          "mode": "all"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaptchaSitesCreateRequest"
+              },
+              "example": {
+                "name": "urbanstudio.de",
+                "hosts": [
+                  "urbanstudio.de",
+                  "*.urbanstudio.de"
+                ],
+                "mode": "balanced"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/captcha/sites/bulk": {
+      "post": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-bulk",
+        "summary": "Viele Domains auf einmal anlegen",
+        "description": "Legt bis zu 100 Domains in einem Aufruf an (z. B. für Agenturen). Jeder Eintrag wird einzeln geprüft; die Antwort (207) nennt je Eintrag Erfolg oder Fehler. Die Secrets stehen nur hier.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesBulkResponse"
+                },
+                "example": {
+                  "success": true,
+                  "created": 2,
+                  "results": [
+                    {
+                      "index": 0,
+                      "ok": true,
+                      "site": {
+                        "id": "uuid",
+                        "sitekey": "ek_site_…"
+                      },
+                      "secret": "ek_secret_…"
+                    },
+                    {
+                      "index": 1,
+                      "ok": false,
+                      "error": "site_limit"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid_bulk",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:write"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:write"
+          ],
+          "mode": "all"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaptchaSitesBulkRequest"
+              },
+              "example": {
+                "sites": [
+                  {
+                    "name": "kunde-a.de",
+                    "hosts": [
+                      "kunde-a.de",
+                      "*.kunde-a.de"
+                    ]
+                  },
+                  {
+                    "name": "kunde-b.de",
+                    "hosts": [
+                      "kunde-b.de"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/captcha/sites/{id}": {
+      "get": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-get",
+        "summary": "Domain im Detail",
+        "description": "Einstellungen einer Domain einschließlich Seitenschutz und Beobachten-Modus.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesGetResponse"
+                },
+                "example": {
+                  "success": true,
+                  "site": {
+                    "id": "uuid",
+                    "name": "urbanstudio.de",
+                    "hosts": [
+                      "urbanstudio.de"
+                    ],
+                    "mode": "balanced",
+                    "observe": false,
+                    "gate": {
+                      "enabled": false,
+                      "ttl_min": 60,
+                      "skip": [
+                        "/robots.txt"
+                      ],
+                      "crawlers": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:read"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:read"
+          ],
+          "mode": "all"
+        }
+      },
+      "patch": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-update",
+        "summary": "Domain ändern",
+        "description": "Ändert Name, Hosts, Modus, Token-Gültigkeit, Pausierung, **Beobachten-Modus** (`observe`: bewerten und zählen, aber nie blockieren) und den Seitenschutz (`gate`). Jede Änderung steht im Änderungsprotokoll.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesUpdateResponse"
+                },
+                "example": {
+                  "success": true,
+                  "site": {
+                    "id": "uuid",
+                    "observe": true
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ungültige Eingabe",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:write"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:write"
+          ],
+          "mode": "all"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaptchaSitesUpdateRequest"
+              },
+              "example": {
+                "observe": true
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-delete",
+        "summary": "Domain löschen",
+        "description": "Löscht die Domain samt Schlüsseln, Regeln und Statistik.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesDeleteResponse"
+                },
+                "example": {
+                  "success": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:write"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:write"
+          ],
+          "mode": "all"
+        }
+      }
+    },
+    "/api/captcha/sites/{id}/rotate-secret": {
+      "post": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-rotate",
+        "summary": "Secret erneuern",
+        "description": "Erzeugt ein neues Secret; das alte gilt noch eine Stunde.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesRotateResponse"
+                },
+                "example": {
+                  "success": true,
+                  "secret": "ek_secret_…"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:write"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:write"
+          ],
+          "mode": "all"
+        }
+      }
+    },
+    "/api/captcha/sites/{id}/stats": {
+      "get": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-stats",
+        "summary": "Statistik einer Domain",
+        "description": "Zähler je Tag und Kennzahl (challenge, solved, verify_ok, rejected, verify_fail, form_allow/review/block, gate_view/pass, observed_block, form_observed).",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "required": false,
+            "description": "1–90, Standard 30",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesStatsResponse"
+                },
+                "example": {
+                  "success": true,
+                  "days": 30,
+                  "rows": [
+                    {
+                      "day": "2026-10-17",
+                      "metric": "verify_ok",
+                      "n": 120
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:read"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:read"
+          ],
+          "mode": "all"
+        }
+      }
+    },
+    "/api/captcha/sites/{id}/export.csv": {
+      "get": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-export",
+        "summary": "Auswertung als CSV",
+        "description": "Tageswerte als CSV (Trennzeichen Semikolon, UTF-8 mit BOM).",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "required": false,
+            "description": "1–400, Standard 90",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "day;rejected;verify_ok\r\n2026-10-17;3;120",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:read"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:read"
+          ],
+          "mode": "all"
+        }
+      }
+    },
+    "/api/captcha/sites/{id}/activity": {
+      "get": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-sites-activity",
+        "summary": "Änderungsprotokoll",
+        "description": "Wer hat wann was geändert (Anlegen, Einstellungen, Secret, Regeln). Ohne IP-Adressen und ohne Werte.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "1–100",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Startposition",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaSitesActivityResponse"
+                },
+                "example": {
+                  "success": true,
+                  "total": 2,
+                  "activity": [
+                    {
+                      "action": "captcha.site_update",
+                      "at": "2026-10-17T09:00:00Z",
+                      "user": "Anna",
+                      "via": "dashboard",
+                      "fields": [
+                        "observe"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:read"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:read"
+          ],
+          "mode": "all"
+        }
+      }
+    },
+    "/api/captcha/sites/{id}/rules": {
+      "get": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-rules-list",
+        "summary": "Eigene Regeln",
+        "description": "Sperren und Freigaben der Inhaltsprüfung (IP, Netz, E-Mail, Domain, Benutzername, Textteil) und gelernte Einträge.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaRulesListResponse"
+                },
+                "example": {
+                  "success": true,
+                  "rules": [
+                    {
+                      "id": "1",
+                      "kind": "ip",
+                      "action": "block",
+                      "value": "203.0.113.9",
+                      "source": "manual"
+                    }
+                  ],
+                  "lists": []
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:read"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:read"
+          ],
+          "mode": "all"
+        }
+      },
+      "post": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-rules-add",
+        "summary": "Regel hinzufügen",
+        "description": "Legt eine Sperre oder Freigabe an. Freigaben haben Vorrang.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaRulesAddResponse"
+                },
+                "example": {
+                  "success": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ungültiger Wert",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:write"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:write"
+          ],
+          "mode": "all"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaptchaRulesAddRequest"
+              },
+              "example": {
+                "kind": "ip",
+                "action": "block",
+                "value": "203.0.113.9",
+                "note": "Spam-Welle"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/captcha/sites/{id}/rules/{rid}": {
+      "delete": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-rules-delete",
+        "summary": "Regel löschen",
+        "description": "Entfernt eine eigene Regel.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Domain-ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "description": "Regel-ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaRulesDeleteResponse"
+                },
+                "example": {
+                  "success": true
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nicht gefunden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:write"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:write"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:write"
+          ],
+          "mode": "all"
+        }
+      }
+    },
+    "/api/captcha/plan": {
+      "get": {
+        "tags": [
+          "EMPEDIAcaptcha (Domains, Regeln, Auswertung)"
+        ],
+        "operationId": "captcha-plan",
+        "summary": "Paket und Verbrauch",
+        "description": "Domain-Limit, enthaltene und genutzte Prüfungen des Monats und die anfallende Überschreitung.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Erfolg",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaptchaPlanResponse"
+                },
+                "example": {
+                  "success": true,
+                  "plan": {
+                    "tier": "paid",
+                    "name": "EMPEDIAcaptcha Pro",
+                    "sites_limit": 25,
+                    "sites_used": 3,
+                    "checks_included": 250000,
+                    "checks_used": 1200
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": [
+              "captcha:read"
+            ]
+          },
+          {
+            "oauth2": [
+              "captcha:read"
+            ]
+          }
+        ],
+        "x-required-scopes": {
+          "scopes": [
+            "captcha:read"
+          ],
+          "mode": "all"
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2ClientCredentials": {
+        "type": "oauth2",
+        "description": "Server-zu-Server: kurzlebige Access-Tokens für einen Service-Client (Einstellungen → API-Zugang)",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://empedia.cloud/oauth/token",
+            "scopes": {
+              "captcha:read": "Read EMPEDIAcaptcha (domains, rules, statistics, activity log)",
+              "captcha:write": "Manage EMPEDIAcaptcha (create/change/delete domains, renew secrets, rules, observe mode, page protection)"
+            }
+          }
+        }
+      },
+      "oauth2": {
+        "type": "oauth2",
+        "description": "Authorization Code mit PKCE für Apps mit Benutzeranmeldung",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://empedia.cloud/oauth/authorize",
+            "tokenUrl": "https://empedia.cloud/oauth/token",
+            "refreshUrl": "https://empedia.cloud/oauth/token",
+            "scopes": {
+              "captcha:read": "Read EMPEDIAcaptcha (domains, rules, statistics, activity log)",
+              "captcha:write": "Manage EMPEDIAcaptcha (create/change/delete domains, renew secrets, rules, observe mode, page protection)"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "CaptchaSitesListResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "sites": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaptchaSitesListResponseSitesItem"
+            }
+          }
+        },
+        "required": [
+          "success",
+          "sites"
+        ]
+      },
+      "CaptchaSitesListResponseSitesItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "uuid"
+            ],
+            "description": "Eindeutige ID (UUID)"
+          },
+          "name": {
+            "type": "string",
+            "examples": [
+              "urbanstudio.de"
+            ],
+            "description": "Name"
+          },
+          "sitekey": {
+            "type": "string",
+            "examples": [
+              "ek_site_…"
+            ]
+          },
+          "hosts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "examples": [
+                "urbanstudio.de"
+              ]
+            }
+          },
+          "mode": {
+            "type": "string",
+            "examples": [
+              "balanced"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "examples": [
+              "active"
+            ],
+            "description": "Aktueller Status"
+          },
+          "observe": {
+            "type": "boolean"
+          },
+          "ok_30d": {
+            "type": "integer",
+            "examples": [
+              1234
+            ]
+          },
+          "rejected_30d": {
+            "type": "integer",
+            "examples": [
+              56
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "sitekey",
+          "hosts",
+          "mode",
+          "status",
+          "observe",
+          "ok_30d",
+          "rejected_30d"
+        ]
+      },
+      "CaptchaSitesCreateResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "examples": [
+                  "uuid"
+                ],
+                "description": "Eindeutige ID (UUID)"
+              },
+              "sitekey": {
+                "type": "string",
+                "examples": [
+                  "ek_site_…"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "sitekey"
+            ]
+          },
+          "secret": {
+            "type": "string",
+            "examples": [
+              "ek_secret_…"
+            ],
+            "description": "Geheimnis — wird nur einmal angezeigt"
+          }
+        },
+        "required": [
+          "success",
+          "site",
+          "secret"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "description": "Error response",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": false
+          },
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        },
+        "required": [
+          "success",
+          "error"
+        ],
+        "examples": [
+          {
+            "success": false,
+            "error": "Nicht gefunden"
+          }
+        ]
+      },
+      "CaptchaSitesCreateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name (bis 120 Zeichen)"
+          },
+          "hosts": {
+            "type": "array",
+            "items": {},
+            "description": "Hosts der Domain"
+          },
+          "mode": {
+            "type": "string",
+            "description": "lenient, balanced (Standard) oder strict"
+          }
+        },
+        "required": [
+          "name",
+          "hosts"
+        ]
+      },
+      "CaptchaSitesBulkResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "created": {
+            "type": "integer",
+            "examples": [
+              2
+            ]
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaptchaSitesBulkResponseResultsItem"
+            }
+          }
+        },
+        "required": [
+          "success",
+          "created",
+          "results"
+        ]
+      },
+      "CaptchaSitesBulkResponseResultsItem": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer",
+            "examples": [
+              0
+            ]
+          },
+          "ok": {
+            "type": "boolean"
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "examples": [
+                  "uuid"
+                ],
+                "description": "Eindeutige ID (UUID)"
+              },
+              "sitekey": {
+                "type": "string",
+                "examples": [
+                  "ek_site_…"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "sitekey"
+            ]
+          },
+          "secret": {
+            "type": "string",
+            "examples": [
+              "ek_secret_…"
+            ],
+            "description": "Geheimnis — wird nur einmal angezeigt"
+          }
+        },
+        "required": [
+          "index",
+          "ok",
+          "site",
+          "secret"
+        ]
+      },
+      "CaptchaSitesBulkRequest": {
+        "type": "object",
+        "properties": {
+          "sites": {
+            "type": "array",
+            "items": {},
+            "description": "Liste von { name, hosts, mode? }, höchstens 100"
+          }
+        },
+        "required": [
+          "sites"
+        ]
+      },
+      "CaptchaSitesGetResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "examples": [
+                  "uuid"
+                ],
+                "description": "Eindeutige ID (UUID)"
+              },
+              "name": {
+                "type": "string",
+                "examples": [
+                  "urbanstudio.de"
+                ],
+                "description": "Name"
+              },
+              "hosts": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "examples": [
+                    "urbanstudio.de"
+                  ]
+                }
+              },
+              "mode": {
+                "type": "string",
+                "examples": [
+                  "balanced"
+                ]
+              },
+              "observe": {
+                "type": "boolean"
+              },
+              "gate": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Aktiv oder pausiert"
+                  },
+                  "ttl_min": {
+                    "type": "integer",
+                    "examples": [
+                      60
+                    ]
+                  },
+                  "skip": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "examples": [
+                        "/robots.txt"
+                      ]
+                    }
+                  },
+                  "crawlers": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "enabled",
+                  "ttl_min",
+                  "skip",
+                  "crawlers"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "hosts",
+              "mode",
+              "observe",
+              "gate"
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "site"
+        ]
+      },
+      "CaptchaSitesUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "site": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "examples": [
+                  "uuid"
+                ],
+                "description": "Eindeutige ID (UUID)"
+              },
+              "observe": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "observe"
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "site"
+        ]
+      },
+      "CaptchaSitesUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name"
+          },
+          "hosts": {
+            "type": "array",
+            "items": {},
+            "description": "Hosts"
+          },
+          "mode": {
+            "type": "string",
+            "description": "lenient, balanced, strict"
+          },
+          "observe": {
+            "type": "boolean",
+            "description": "Beobachten-Modus"
+          },
+          "status": {
+            "type": "string",
+            "description": "active oder paused"
+          },
+          "gate": {
+            "type": "object",
+            "description": "{ enabled, ttl_min, skip, crawlers }"
+          }
+        }
+      },
+      "CaptchaSitesDeleteResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "CaptchaSitesRotateResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "secret": {
+            "type": "string",
+            "examples": [
+              "ek_secret_…"
+            ],
+            "description": "Geheimnis — wird nur einmal angezeigt"
+          }
+        },
+        "required": [
+          "success",
+          "secret"
+        ]
+      },
+      "CaptchaSitesStatsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "days": {
+            "type": "integer",
+            "examples": [
+              30
+            ]
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaptchaSitesStatsResponseRowsItem"
+            }
+          }
+        },
+        "required": [
+          "success",
+          "days",
+          "rows"
+        ]
+      },
+      "CaptchaSitesStatsResponseRowsItem": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "string",
+            "format": "date",
+            "examples": [
+              "2026-10-17"
+            ]
+          },
+          "metric": {
+            "type": "string",
+            "examples": [
+              "verify_ok"
+            ]
+          },
+          "n": {
+            "type": "integer",
+            "examples": [
+              120
+            ]
+          }
+        },
+        "required": [
+          "day",
+          "metric",
+          "n"
+        ]
+      },
+      "CaptchaSitesActivityResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "total": {
+            "type": "integer",
+            "examples": [
+              2
+            ],
+            "description": "Gesamtanzahl"
+          },
+          "activity": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaptchaSitesActivityResponseActivityItem"
+            }
+          }
+        },
+        "required": [
+          "success",
+          "total",
+          "activity"
+        ]
+      },
+      "CaptchaSitesActivityResponseActivityItem": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "examples": [
+              "captcha.site_update"
+            ]
+          },
+          "at": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-10-17T09:00:00Z"
+            ]
+          },
+          "user": {
+            "type": "string",
+            "examples": [
+              "Anna"
+            ]
+          },
+          "via": {
+            "type": "string",
+            "examples": [
+              "dashboard"
+            ]
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "examples": [
+                "observe"
+              ]
+            }
+          }
+        },
+        "required": [
+          "action",
+          "at",
+          "user",
+          "via",
+          "fields"
+        ]
+      },
+      "CaptchaRulesListResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaptchaRulesListResponseRulesItem"
+            }
+          },
+          "lists": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "required": [
+          "success",
+          "rules",
+          "lists"
+        ]
+      },
+      "CaptchaRulesListResponseRulesItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "1"
+            ],
+            "description": "Eindeutige ID (UUID)"
+          },
+          "kind": {
+            "type": "string",
+            "examples": [
+              "ip"
+            ]
+          },
+          "action": {
+            "type": "string",
+            "examples": [
+              "block"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "examples": [
+              "203.0.113.9"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "examples": [
+              "manual"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "action",
+          "value",
+          "source"
+        ]
+      },
+      "CaptchaRulesAddResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "CaptchaRulesAddRequest": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "description": "ip, cidr, email, domain, username oder content"
+          },
+          "action": {
+            "type": "string",
+            "description": "block oder allow"
+          },
+          "value": {
+            "type": "string",
+            "description": "Wert"
+          },
+          "note": {
+            "type": "string",
+            "description": "Notiz"
+          }
+        },
+        "required": [
+          "kind",
+          "action",
+          "value"
+        ]
+      },
+      "CaptchaRulesDeleteResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "CaptchaPlanResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "true bei Erfolg"
+          },
+          "plan": {
+            "type": "object",
+            "properties": {
+              "tier": {
+                "type": "string",
+                "examples": [
+                  "paid"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "examples": [
+                  "EMPEDIAcaptcha Pro"
+                ],
+                "description": "Name"
+              },
+              "sites_limit": {
+                "type": "integer",
+                "examples": [
+                  25
+                ]
+              },
+              "sites_used": {
+                "type": "integer",
+                "examples": [
+                  3
+                ]
+              },
+              "checks_included": {
+                "type": "integer",
+                "examples": [
+                  250000
+                ]
+              },
+              "checks_used": {
+                "type": "integer",
+                "examples": [
+                  1200
+                ]
+              }
+            },
+            "required": [
+              "tier",
+              "name",
+              "sites_limit",
+              "sites_used",
+              "checks_included",
+              "checks_used"
+            ]
+          }
+        },
+        "required": [
+          "success",
+          "plan"
+        ]
+      }
+    }
+  }
+}

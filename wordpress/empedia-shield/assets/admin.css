@@ -1,0 +1,30 @@
+.empedia-cloud .empedia-card { background: #fff; border: 1px solid #c3c4c7; border-radius: 4px; padding: 4px 20px 16px; margin: 16px 0; max-width: 1100px; }
+.empedia-cloud .empedia-card h2 { margin-top: 12px; }
+.empedia-cloud .empedia-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 16px; }
+.empedia-cloud .empedia-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.empedia-cloud .empedia-inline { display: inline-block; margin: 0; }
+.empedia-cloud .empedia-domain { font-size: 1.2em; }
+.empedia-cloud .empedia-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 1100px; margin: 16px 0; }
+.empedia-cloud .empedia-tile { background: #fff; border: 1px solid #c3c4c7; border-left: 4px solid #c3c4c7; border-radius: 4px; padding: 12px 16px; }
+.empedia-cloud .empedia-tile.good { border-left-color: #00a32a; }
+.empedia-cloud .empedia-tile.warn { border-left-color: #dba617; }
+.empedia-cloud .empedia-tile.bad { border-left-color: #d63638; }
+.empedia-cloud .empedia-tile-label { font-size: 12px; text-transform: uppercase; letter-spacing: .03em; color: #50575e; }
+.empedia-cloud .empedia-tile-value { font-size: 1.6em; font-weight: 600; margin-top: 2px; }
+.empedia-cloud .empedia-tile-sub { color: #50575e; font-size: 12px; }
+.empedia-cloud .empedia-badge { display: inline-block; padding: 1px 8px; border-radius: 3px; font-size: 12px; background: #f0f0f1; color: #1d2327; }
+.empedia-cloud .empedia-badge.good { background: #edfaef; color: #006a1c; }
+.empedia-cloud .empedia-badge.warn { background: #fcf9e8; color: #8a5a00; }
+.empedia-cloud .empedia-badge.bad { background: #fcf0f1; color: #b32d2e; }
+.empedia-cloud .empedia-rules td { vertical-align: top; }
+.empedia-cloud .empedia-rules .description { margin-top: 2px; }
+.empedia-cloud .empedia-right { text-align: right; white-space: nowrap; }
+.empedia-cloud .empedia-note { margin-top: 6px; padding: 6px 10px; background: #fcf9e8; border-left: 3px solid #dba617; }
+.empedia-cloud .empedia-list { list-style: disc; margin-left: 20px; }
+.empedia-widget-list { list-style: disc; margin-left: 18px; }
+
+.empedia-cloud .empedia-actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.empedia-cloud .empedia-actions form { margin: 0; display: inline-flex; }
+.empedia-cloud .button.button-link-delete { color: #b32d2e; border-color: #b32d2e; background: #fff; }
+.empedia-cloud .button.button-link-delete:hover, .empedia-cloud .button.button-link-delete:focus { color: #fff; background: #b32d2e; border-color: #b32d2e; }
+.empedia-cloud .empedia-right .empedia-inline + .empedia-inline { margin-left: 6px; }

@@ -1,0 +1,37 @@
+# Veröffentlichung von „EMPEDIA Shield“ im WordPress.org-Plugin-Verzeichnis (SVN, automatisch).
+# Auslöser: Tag `shield-v<Version>` (z. B. shield-v1.7.0) – getrennt von den SDK-Tags `v*`, weil das Plugin eine eigene Versionsnummer hat.
+# Benötigte Secrets (Einstellungen → Secrets → Actions): WPORG_SVN_USERNAME, WPORG_SVN_PASSWORD
+# (das SVN-Passwort wird im WordPress.org-Profil erzeugt, nicht das Kontopasswort).
+name: WordPress.org
+on:
+  push: { tags: ['shield-v*'] }
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Version prüfen (Tag = Plugin-Kopf = readme.txt)
+        id: v
+        run: |
+          TAG="${GITHUB_REF_NAME#shield-v}"
+          HEAD=$(grep -m1 -E '^\s*\*\s*Version:' wordpress/empedia-shield/empedia-shield.php | sed -E 's/.*Version:\s*//; s/\s+$//')
+          STABLE=$(grep -m1 -E '^Stable tag:' wordpress/empedia-shield/readme.txt | sed -E 's/Stable tag:\s*//; s/\s+$//')
+          echo "Tag=$TAG Kopf=$HEAD readme=$STABLE"
+          [ "$TAG" = "$HEAD" ] && [ "$TAG" = "$STABLE" ] || { echo "Versionen stimmen nicht überein"; exit 1; }
+          echo "version=$TAG" >> "$GITHUB_OUTPUT"
+      - name: Grafiken für SVN assets/ zusammenstellen
+        run: |
+          mkdir -p "$RUNNER_TEMP/wp-assets"
+          D=wordpress/empedia-shield-directory
+          cp $D/icon-*.png "$RUNNER_TEMP/wp-assets/" 2>/dev/null || true
+          cp $D/banner-*.png "$RUNNER_TEMP/wp-assets/" 2>/dev/null || true
+          cp $D/screenshots/screenshot-*.png "$RUNNER_TEMP/wp-assets/" 2>/dev/null || true
+          ls -la "$RUNNER_TEMP/wp-assets"
+      - uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.WPORG_SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.WPORG_SVN_PASSWORD }}
+          SLUG: empedia-shield
+          VERSION: ${{ steps.v.outputs.version }}
+          BUILD_DIR: wordpress/empedia-shield
+          ASSETS_DIR: ${{ runner.temp }}/wp-assets

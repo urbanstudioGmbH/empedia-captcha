@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>EMPEDIAcaptcha</title>
+        <title lang="de-DE">EMPEDIAcaptcha</title>
+        <input-field><name>base</name><label>Dienst-Adresse</label><label lang="de-DE">Adresse des Dienstes</label><placeholder>https://captcha.example.com</placeholder></input-field>
+        <input-field><name>sitekey</name><label>Site key</label><label lang="de-DE">Website-Schlüssel</label></input-field>
+        <input-field type="password"><name>secret</name><label>Secret key</label><label lang="de-DE">Geheimer Schlüssel (besser Umgebungsvariable EMPEDIA_CAPTCHA_SECRET)</label></input-field>
+        <input-field type="bool"><name>failOpen</name><label>Allow requests if the service is unreachable</label><label lang="de-DE">Bei Ausfall des Dienstes durchlassen</label><defaultValue>true</defaultValue></input-field>
+    </card>
+</config>

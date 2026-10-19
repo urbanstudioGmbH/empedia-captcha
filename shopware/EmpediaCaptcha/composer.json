@@ -1,0 +1,10 @@
+{
+  "name": "urbanstudio/empedia-captcha-shopware",
+  "type": "shopware-platform-plugin",
+  "description": "EMPEDIAcaptcha für Shopware 6: Bot-Prüfung ohne Cookies in den Storefront-Formularen.",
+  "license": "MIT",
+  "version": "1.0.1",
+  "require": { "shopware/core": "^6.5 || ^6.6", "shopware/storefront": "^6.5 || ^6.6" },
+  "autoload": { "psr-4": { "Urbanstudio\\EmpediaCaptcha\\": "src/" } },
+  "extra": { "shopware-plugin-class": "Urbanstudio\\EmpediaCaptcha\\EmpediaCaptcha", "label": { "de-DE": "EMPEDIAcaptcha", "en-GB": "EMPEDIAcaptcha" } }
+}

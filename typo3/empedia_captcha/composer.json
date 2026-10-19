@@ -1,0 +1,9 @@
+{
+  "name": "urbanstudio/empedia-captcha-typo3",
+  "type": "typo3-cms-extension",
+  "description": "EMPEDIAcaptcha für TYPO3: Bot-Prüfung ohne Cookies (ViewHelper, Prüfdienst, Seitenschutz-Schalter).",
+  "license": "GPL-2.0-or-later",
+  "require": { "php": ">=7.4", "typo3/cms-core": "^11.5 || ^12.4 || ^13.0", "urbanstudio/empedia-captcha": "^1.0.1" },
+  "autoload": { "psr-4": { "Urbanstudio\\EmpediaCaptcha\\": "Classes/" } },
+  "extra": { "typo3/cms": { "extension-key": "empedia_captcha" } }
+}

@@ -1,0 +1,8 @@
+# cat=basic; type=string; label=Adresse des Dienstes (https://captcha.example.com)
+base =
+# cat=basic; type=string; label=Website-Schlüssel (ek_site_…)
+sitekey =
+# cat=basic; type=string; label=Geheimer Schlüssel – besser als Umgebungsvariable EMPEDIA_CAPTCHA_SECRET
+secret =
+# cat=basic; type=boolean; label=Bei Ausfall des Dienstes durchlassen
+failOpen = 1

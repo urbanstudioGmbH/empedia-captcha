@@ -1,0 +1,43 @@
+{
+  "name": "@urbanstudio/empedia-captcha",
+  "version": "1.0.1",
+  "description": "SDK für EMPEDIAcaptcha: Bot-Prüfung (siteverify), Inhaltsprüfung (check), Express-Middleware. Ohne Abhängigkeiten.",
+  "type": "module",
+  "main": "index.mjs",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "types": "./index.d.ts"
+    }
+  },
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "files": [
+    "index.mjs",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "captcha",
+    "spam",
+    "bot-protection",
+    "privacy",
+    "gdpr",
+    "empedia"
+  ],
+  "homepage": "https://empedia.cloud/docs-guides/captcha.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urbanstudioGmbH/empedia-captcha.git",
+    "directory": "node"
+  },
+  "bugs": "https://github.com/urbanstudioGmbH/empedia-captcha/issues",
+  "author": "urbanstudio GmbH",
+  "publishConfig": {
+    "access": "public"
+  }
+}
