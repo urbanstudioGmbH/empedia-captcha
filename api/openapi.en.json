@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "EMPEDIAcaptcha API",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Management of EMPEDIAcaptcha domains, rules, and statistics. Token and content verification are documented in the SDK guides.",
     "contact": {
       "name": "urbanstudio GmbH",

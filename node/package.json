@@ -1,6 +1,6 @@
 {
   "name": "@urbanstudio/empedia-captcha",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SDK für EMPEDIAcaptcha: Bot-Prüfung (siteverify), Inhaltsprüfung (check), Express-Middleware. Ohne Abhängigkeiten.",
   "type": "module",
   "main": "index.mjs",

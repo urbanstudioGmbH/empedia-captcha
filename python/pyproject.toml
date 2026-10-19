@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "empedia-captcha"
-version = "1.0.1"
+version = "1.0.2"
 description = "SDK für EMPEDIAcaptcha: Bot-Prüfung (siteverify) und Inhaltsprüfung (check). Ohne Abhängigkeiten."
 requires-python = ">=3.8"
 license = { text = "MIT" }

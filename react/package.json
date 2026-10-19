@@ -1,6 +1,6 @@
 {
   "name": "@urbanstudio/empedia-captcha-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React-/Next.js-Baustein für EMPEDIAcaptcha: Komponente und Hook für die Bot-Prüfung im Browser.",
   "type": "module",
   "main": "index.js",
