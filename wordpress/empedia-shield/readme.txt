@@ -1,4 +1,4 @@
-=== EMPEDIA Shield – Security, Firewall & Backups ===
+=== EMPEDIA Shield ===
 Contributors: urbanstudiogmbh
 Tags: security, firewall, two-factor, backup, login
 Requires at least: 5.8

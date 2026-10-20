@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       EMPEDIA Shield – Security, Firewall & Backups
+ * Plugin Name:       EMPEDIA Shield
  * Plugin URI:        https://empedia.cloud
  * Description:       Security settings, sign-in protection with two-factor authentication and passkeys, file integrity check, firewall, encrypted backups and bot protection (EMPEDIAcaptcha) – with an optional connection to EMPEDIAcloud.
  * Version:           1.8.6
