@@ -4,7 +4,7 @@ Tags: security, firewall, two-factor, backup, login
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.8.5
+Stable tag: 1.8.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,10 @@ Add `define( 'EMPEDIA_CLOUD_2FA_OFF', true );` (second factor step off) or `defi
 8. Comments: switch comments off without deleting anything, check and clean up existing comments.
 
 == Changelog ==
+
+= 1.8.6 =
+* Fixed: bot protection now validates the WooCommerce Checkout block through the Store API as well as the classic checkout.
+* Improved: the CAPTCHA widget script URL uses the new plugin version, so browsers fetch the latest service fix for Contact Form 7.
 
 = 1.8.5 =
 * Improved: the check “user names readable via ?author=” no longer tries only ID 1. It also tries up to three real user IDs from the local user table (authors with published posts, then administrators; only numbers are read, no names). One revealed name is enough for “open”.

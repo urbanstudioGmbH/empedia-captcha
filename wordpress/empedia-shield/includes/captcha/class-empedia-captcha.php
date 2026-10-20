@@ -102,6 +102,8 @@ final class Empedia_Captcha_Plugin
         add_action('woocommerce_review_order_before_submit', function () { $this->field('woo', 'checkout'); });
         add_action('woocommerce_after_checkout_validation', [$this, 'check_checkout'], 10, 2);
         add_filter('woocommerce_process_registration_errors', [$this, 'check_woo_register'], 10, 1);
+        add_filter('render_block_woocommerce/checkout-actions-block', [$this, 'block_checkout_field']);
+        add_filter('rest_pre_dispatch', [$this, 'check_block_checkout'], 10, 3);
 
         // Contact Form 7
         add_filter('wpcf7_form_elements', [$this, 'cf7_inject']);
@@ -134,7 +136,7 @@ final class Empedia_Captcha_Plugin
         $o = self::opts();
         wp_enqueue_script('empedia-shield', rtrim($o['base'], '/') . '/captcha/v1/widget.js', [], EMPEDIA_CLOUD_VERSION, ['strategy' => 'defer', 'in_footer' => true]);
         // Token ist einmalig: nach einem abgelehnten WooCommerce-Checkout neu anfordern
-        wp_add_inline_script('empedia-shield', "jQuery&&jQuery(document.body).on('checkout_error',function(){if(window.EmpediaCaptcha&&EmpediaCaptcha.reset){EmpediaCaptcha.reset();}});", 'after');
+        wp_add_inline_script('empedia-shield', "if(window.jQuery){window.jQuery(document.body).on('checkout_error',function(){if(window.EmpediaCaptcha&&window.EmpediaCaptcha.reset){window.EmpediaCaptcha.reset();}});}", 'after');
     }
 
     /* ---------- Checks ---------- */
@@ -197,6 +199,28 @@ final class Empedia_Captcha_Plugin
     public function check_checkout($data, $errors)
     {
         if ($this->on('woo') && !$this->ok('checkout')) { $errors->add('empedia_captcha', $this->msg()); }
+    }
+
+    /** The Checkout block does not call the classic WooCommerce checkout hooks. */
+    public function block_checkout_field($content)
+    {
+        if (is_admin() || !$this->on('woo')) { return $content; }
+        wp_enqueue_script('empedia-shield-woo-blocks', EMPEDIA_CLOUD_URL_BASE . 'assets/captcha-woo-blocks.js', ['empedia-shield', 'wp-data'], EMPEDIA_CLOUD_VERSION, ['strategy' => 'defer', 'in_footer' => true]);
+        return $this->element('checkout') . $content;
+    }
+
+    /** Reject direct Store API checkout requests without a valid proof, before an order is processed. */
+    public function check_block_checkout($result, $server, $request)
+    {
+        if (is_wp_error($result) || !$this->on('woo') || $request->get_method() !== 'POST' ||
+            !preg_match('#^/wc/store(?:/v[0-9]+)?/checkout/?$#', $request->get_route())) { return $result; }
+        $body = $request->get_json_params();
+        $token = is_array($body) && isset($body['extensions']['empedia-shield']['token']) && is_string($body['extensions']['empedia-shield']['token'])
+            ? sanitize_text_field($body['extensions']['empedia-shield']['token']) : '';
+        $r = $this->client()->verify($token, 'checkout');
+        if ($r->success) { return $result; }
+        self::note_fail('checkout', $r->errorCodes);
+        return new WP_Error('empedia_captcha', $this->msg(), ['status' => 403]);
     }
 
     /**

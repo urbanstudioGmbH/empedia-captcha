@@ -3,7 +3,7 @@
  * Plugin Name:       EMPEDIA Shield – Security, Firewall & Backups
  * Plugin URI:        https://empedia.cloud
  * Description:       Security settings, sign-in protection with two-factor authentication and passkeys, file integrity check, firewall, encrypted backups and bot protection (EMPEDIAcaptcha) – with an optional connection to EMPEDIAcloud.
- * Version:           1.8.5
+ * Version:           1.8.6
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            urbanstudio GmbH
@@ -49,7 +49,7 @@ if ( $empedia_shield_legacy['cloud'] ) {
 	return;
 }
 
-define( 'EMPEDIA_CLOUD_VERSION', '1.8.5' );
+define( 'EMPEDIA_CLOUD_VERSION', '1.8.6' );
 define( 'EMPEDIA_CLOUD_FILE', __FILE__ );
 define( 'EMPEDIA_CLOUD_DIR', plugin_dir_path( __FILE__ ) );
 define( 'EMPEDIA_CLOUD_URL_BASE', plugin_dir_url( __FILE__ ) );
